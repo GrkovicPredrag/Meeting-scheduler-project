@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{0D844833-94B4-49EE-97F4-339C7BCC1560}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{37850AB3-AD1D-4B8E-BFA3-2E0FBAD5E28B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0D844833-94B4-49EE-97F4-339C7BCC1560}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D844833-94B4-49EE-97F4-339C7BCC1560}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D844833-94B4-49EE-97F4-339C7BCC1560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37850AB3-AD1D-4B8E-BFA3-2E0FBAD5E28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37850AB3-AD1D-4B8E-BFA3-2E0FBAD5E28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37850AB3-AD1D-4B8E-BFA3-2E0FBAD5E28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37850AB3-AD1D-4B8E-BFA3-2E0FBAD5E28B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
