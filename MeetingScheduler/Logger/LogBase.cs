@@ -12,8 +12,4 @@ namespace Logger
         public abstract void Log(string message);
     }
 
-    public enum LogTarget
-    {
-        File, Database, EventLog
-    }
 }
