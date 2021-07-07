@@ -13,16 +13,16 @@ namespace Logger
 
         public FileLogger()
         {
-            FilePath = "/../log.txt";
+            FilePath = "V:/log.txt";
         }
 
         public override void Log(string message)
         {
             lock (lockObj)
             {
-                using (StreamWriter streamWriter = new StreamWriter(FilePath))
+                using (StreamWriter streamWriter = new StreamWriter(FilePath, append: true))
                 {
-                    streamWriter.WriteLine(message);
+                    streamWriter.WriteLineAsync(message);
                     streamWriter.Close();
                 }
             }

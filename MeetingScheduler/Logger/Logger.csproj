@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OutputLogger.cs" />
     <Compile Include="DBLogger.cs" />
     <Compile Include="EventLogger.cs" />
     <Compile Include="FileLogger.cs" />

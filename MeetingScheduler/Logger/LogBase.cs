@@ -10,6 +10,11 @@ namespace Logger
     {
         protected readonly object lockObj = new object();
         public abstract void Log(string message);
+
+        public void AddTimestamp(ref string message)
+        {
+            message += $" [{DateTime.Now.ToString()}]";
+        }
     }
 
 }
