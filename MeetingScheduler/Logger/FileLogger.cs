@@ -13,7 +13,7 @@ namespace Logger
 
         public FileLogger()
         {
-            FilePath = "V:/log.txt";
+            FilePath = "../../../log.txt";
         }
 
         public override void Log(string message)
