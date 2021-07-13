@@ -1,31 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Logger
 {
-    public class FileLogger : LogBase
+    public class FileLogger :ILogger
     {
-        public string FilePath { get; set; }
+        private string filePath;
+        private StringBuilder sb;
+        private object lockObj;
 
-        public FileLogger()
+        public FileLogger(object lockobject)
         {
-            FilePath = "../../../log.txt";
+            sb = new StringBuilder();
+            GetPath();
+            lockObj = lockobject;
         }
 
-        public override void Log(string message)
+        public void Log(string message)
         {
-            lock (lockObj)
+            //timestamp
+            sb.Clear();
+            sb.Append(message);
+            sb.Append($" [{DateTime.Now.ToString()}]");
+            //
+
+            try
             {
-                using (StreamWriter streamWriter = new StreamWriter(FilePath, append: true))
+                lock (lockObj)
                 {
-                    streamWriter.WriteLineAsync(message);
-                    streamWriter.Close();
+                    using (StreamWriter streamWriter = new StreamWriter(filePath, append: true))
+                    {
+                        streamWriter.WriteLineAsync(sb.ToString());
+                        streamWriter.Close();
+                    }
                 }
             }
+            catch(IOException ex)
+            {
+                Debug.WriteLine(ex.Message.ToString());
+            }
         }
+
+        private void GetPath()
+        {
+            try
+            {
+                sb.Clear();
+                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                sb.Append(path);
+                sb.Append("\\log.txt");
+                filePath = sb.ToString();
+                sb.Clear();
+            }
+            catch(IOException ex)
+            {
+                Debug.WriteLine(ex.Message.ToString());
+            }
+        }
+
     }
 }

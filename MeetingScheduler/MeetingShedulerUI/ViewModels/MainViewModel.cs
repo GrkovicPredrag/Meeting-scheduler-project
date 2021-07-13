@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Logger.LogHelper;
 
 namespace MeetingShedulerUI.ViewModels
 {
@@ -14,10 +13,10 @@ namespace MeetingShedulerUI.ViewModels
 
         public MainViewModel()
         {
+            ILogger logger =  LoggerFactory.Create(LoggerFactory.LoggingOption.File);
+            
             CurrentViewModel = new HomeViewModel();
-            LogHelper.Log(LogTarget.EventLog, "Mapped the viewModel.");
-            LogHelper.Log(LogTarget.File, "Mapped the viewModel.");
-            LogHelper.Log(LogTarget.OutputLog, "Mapped the viewModel.");
+            logger.Log("Mapped the view model again!!");
         }
     }
 }

@@ -7,17 +7,39 @@ using System.Threading.Tasks;
 
 namespace Logger
 {
-    public class EventLogger : LogBase
+    public class EventLogger :ILogger
     {
-        public override void Log(string message)
+        private StringBuilder sb;
+        private object lockObj;
+
+        public EventLogger(object lockobject)
         {
-            lock (lockObj)
+            sb = new StringBuilder();
+            lockObj = lockobject;
+        }
+
+        public void Log(string message)
+        {
+            //timestamp
+            sb.Clear();
+            sb.Append(message);
+            sb.Append($" [{DateTime.Now.ToString()}]");
+            //
+
+            try
             {
-                using (EventLog eventLog = new EventLog("Application"))
+                lock (lockObj)
                 {
-                    eventLog.Source = "Application";
-                    eventLog.WriteEntry(message, EventLogEntryType.Information, 101, 1);
+                    using (EventLog eventLog = new EventLog("Application"))
+                    {
+                        eventLog.Source = "Application";
+                        eventLog.WriteEntry(sb.ToString(), EventLogEntryType.Information, 101, 1);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message.ToString());
             }
         }
     }

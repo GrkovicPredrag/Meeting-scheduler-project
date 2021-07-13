@@ -7,14 +7,37 @@ using System.Threading.Tasks;
 
 namespace Logger
 {
-    public class OutputLogger : LogBase
+    public class OutputLogger : ILogger
     {
-        public override void Log(string message)
+        private StringBuilder sb;
+        private object lockObj;
+
+        public OutputLogger(object lockobject)
         {
-            lock (lockObj)
+            sb = new StringBuilder();
+            lockObj = lockobject;
+        }
+
+        public void Log(string message)
+        {
+            //timestamp
+            sb.Clear();
+            sb.Append(message);
+            sb.Append($" [{DateTime.Now.ToString()}]");
+            //
+
+            try
             {
-                Debug.WriteLine(message);
+                lock (lockObj)
+                {
+                    Debug.WriteLine(sb.ToString());
+                }
             }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message.ToString());
+            }
+            
         }
     }
 }
