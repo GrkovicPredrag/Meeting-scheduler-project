@@ -9,13 +9,13 @@ using System.Windows.Input;
 
 namespace MeetingShedulerUI.ViewModels
 {
-    public class HomeViewModel : ViewModelBase
+    public class ProfileViewModel : ViewModelBase
     {
-        public ICommand NavigateLogin { get; }
+        public ICommand NavigateHome { get; }
 
-        public HomeViewModel(NavigationStore navigationStore)
+        public ProfileViewModel(NavigationStore navigationStore)
         {
-            NavigateLogin = new NavigateCommand<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore));
+            NavigateHome = new NavigateCommand<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
         }
     }
 }

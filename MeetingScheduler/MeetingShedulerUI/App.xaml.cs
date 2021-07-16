@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using MeetingShedulerUI.Stores;
 using MeetingShedulerUI.ViewModels;
 
 namespace MeetingShedulerUI
@@ -10,9 +11,12 @@ namespace MeetingShedulerUI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            NavigationStore navigationStore = new NavigationStore();
+            navigationStore.CurrentViewModel = new HomeViewModel(navigationStore);
+
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(navigationStore)
             };
             MainWindow.Show();
 

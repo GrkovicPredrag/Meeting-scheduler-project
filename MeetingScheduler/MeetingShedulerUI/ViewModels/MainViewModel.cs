@@ -1,4 +1,5 @@
 ﻿using Logger;
+using MeetingShedulerUI.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,26 @@ using System.Threading.Tasks;
 
 namespace MeetingShedulerUI.ViewModels
 {
-    public class MainViewModel 
+    public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
+        private readonly NavigationStore _navigationStore;
 
-        public MainViewModel()
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+
+
+
+        public MainViewModel(NavigationStore navigationStore)
         {
             ILogger logger =  LoggerFactory.Create(LoggerFactory.LoggingOption.File);
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
             
-            CurrentViewModel = new HomeViewModel();
             logger.Log("Mapped the view model again!!");
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }
