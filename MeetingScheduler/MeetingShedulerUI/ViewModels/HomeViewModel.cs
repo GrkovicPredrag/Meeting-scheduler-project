@@ -1,4 +1,5 @@
 ﻿using MeetingShedulerUI.Commands;
+using MeetingShedulerUI.Services;
 using MeetingShedulerUI.Stores;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace MeetingShedulerUI.ViewModels
 
         public HomeViewModel(NavigationStore navigationStore)
         {
-            NavigateLogin = new NavigateCommand<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore));
+            NavigateLogin = new NavigateCommand<LoginViewModel>
+                (new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
         }
     }
 }
