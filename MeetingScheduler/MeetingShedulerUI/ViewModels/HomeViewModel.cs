@@ -12,12 +12,15 @@ namespace MeetingShedulerUI.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
+        public NavigationBarViewModel NavigationBarViewModel { get; }
+
         public ICommand NavigateLogin { get; }
 
-        public HomeViewModel(NavigationStore navigationStore)
+        public HomeViewModel(NavigationService<LoginViewModel> loginNavigationService, NavigationBarViewModel navigationBarViewModel)
         {
-            NavigateLogin = new NavigateCommand<LoginViewModel>
-                (new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+            NavigationBarViewModel = navigationBarViewModel;
+
+            NavigateLogin = new NavigateCommand<LoginViewModel>(loginNavigationService);
         }
     }
 }

@@ -14,10 +14,9 @@ namespace MeetingShedulerUI.ViewModels
     {
         public ICommand NavigateProfile { get; }
 
-        public LoginViewModel(NavigationStore navigationStore)
+        public LoginViewModel(NavigationService<ProfileViewModel> profileNavigationService)
         {
-            NavigateProfile = new NavigateCommand<ProfileViewModel>
-                (new NavigationService<ProfileViewModel>(navigationStore, () => new ProfileViewModel(navigationStore)));
+            NavigateProfile = new NavigateCommand<ProfileViewModel>(profileNavigationService);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace MeetingShedulerUI.ViewModels
 
         public MainViewModel(NavigationStore navigationStore)
         {
-            ILogger logger =  LoggerFactory.Create(LoggerFactory.LoggingOption.File);
+            ILogger logger =  LoggerFactory.Create(LoggerFactory.LoggingOption.Output);
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
             
