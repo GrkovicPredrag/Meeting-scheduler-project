@@ -57,6 +57,9 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="Components\LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\LoginForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\NavigationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
