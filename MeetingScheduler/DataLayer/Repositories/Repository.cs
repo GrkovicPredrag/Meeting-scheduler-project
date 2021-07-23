@@ -1,4 +1,5 @@
-﻿using DataLayer.Interfaces;
+﻿using DataLayer.Data;
+using DataLayer.Interfaces;
 using Logger;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Data
+namespace DataLayer.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private SchedulerContext _context = null;
-        private DbSet<TEntity> _table = null;
-        private ILogger _logger = null;
+        protected SchedulerContext _context = null;
+        protected DbSet<TEntity> _table = null;
+        protected ILogger _logger = null;
 
         public Repository()
         {
@@ -23,7 +24,7 @@ namespace DataLayer.Data
             _logger = LoggerFactory.Create(LoggerFactory.LoggingOption.Output);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             IEnumerable<TEntity> toReturn = null;
             try
