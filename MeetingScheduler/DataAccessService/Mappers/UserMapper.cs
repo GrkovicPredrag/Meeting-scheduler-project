@@ -28,6 +28,7 @@ namespace DataAccessService.Mappers
                 userInfo.Password = user.Password;
                 userInfo.Email = user.Email;
                 userInfo.Role = user.Role;
+                userInfo.Team = MapTeam(user.Team);
                 _logger.Log("Succesful User to UserInfo mapping! [Map]");
             }
             catch (Exception ex)
@@ -36,6 +37,23 @@ namespace DataAccessService.Mappers
             }
 
             return userInfo;
+        }
+
+        private TeamInfo MapTeam(Team team)
+        {
+            TeamInfo teamInfo = new TeamInfo();
+            try
+            {
+                teamInfo.Name = team.Name;
+                teamInfo.Desc = team.Desc;
+                _logger.Log("Succesful partial teamInfo mapping! [MapTeam]");
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex.Message.ToString());
+            }
+
+            return teamInfo;
         }
 
         public List<UserInfo> MapCollection(IEnumerable<User> users)

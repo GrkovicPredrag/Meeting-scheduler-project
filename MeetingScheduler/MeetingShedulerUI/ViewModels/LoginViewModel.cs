@@ -12,10 +12,14 @@ namespace MeetingShedulerUI.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
+        public LoginFormViewModel LoginFormViewModel { get; }
+
         public ICommand NavigateProfile { get; }
 
-        public LoginViewModel(NavigationService<ProfileViewModel> profileNavigationService)
+        public LoginViewModel(NavigationService<ProfileViewModel> profileNavigationService, LoginFormViewModel loginFormViewModel)
         {
+            LoginFormViewModel = loginFormViewModel;
+
             NavigateProfile = new NavigateCommand<ProfileViewModel>(profileNavigationService);
         }
     }

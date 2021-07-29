@@ -56,11 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composites\TeamInfo.cs" />
     <Compile Include="Composites\UserInfo.cs" />
+    <Compile Include="Contracts\ITeamService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Mappers\TeamMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TeamService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

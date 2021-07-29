@@ -10,6 +10,11 @@ namespace DataAccessService.Composites
     [DataContract]
     public class UserInfo
     {
+        public UserInfo()
+        {
+            Team = new TeamInfo();
+        }
+
         [DataMember]
         public string Username { get; set; }
 
@@ -27,6 +32,9 @@ namespace DataAccessService.Composites
 
         [DataMember]
         public string Role { get; set; }
+
+        [DataMember]
+        public TeamInfo Team { get; set; }
 
     }
 }

@@ -37,15 +37,22 @@ namespace TestApp
             //IEnumerable<Team> teams = _teamRepo.GetAll();
             IEnumerable<User> users = _userRepo.GetAll();*/
 
-            ChannelFactory<IUserService> factory = new ChannelFactory<IUserService>(
+            ChannelFactory<IUserService> userFactory = new ChannelFactory<IUserService>(
                 new NetTcpBinding(),
                 new EndpointAddress("net.tcp://localhost:4000/IUserService"));
 
-            IUserService proxy = factory.CreateChannel();
+            ChannelFactory<ITeamService> teamFactory = new ChannelFactory<ITeamService>(
+                new NetTcpBinding(),
+                new EndpointAddress("net.tcp://localhost:4001/ITeamService"));
 
-            List<UserInfo> list = new List<UserInfo>();
+            IUserService userProxy = userFactory.CreateChannel();
+            ITeamService teamProxy = teamFactory.CreateChannel();
 
-            list = proxy.GetAll();
+            List<UserInfo> userList = new List<UserInfo>();
+            List<TeamInfo> teamList = new List<TeamInfo>();
+
+            userList = userProxy.GetAll();
+            teamList = teamProxy.GetAll();
 
         }
     }

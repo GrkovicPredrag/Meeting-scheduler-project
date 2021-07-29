@@ -31,13 +31,13 @@
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="Alternatively, you can" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Foreground="AntiqueWhite" FontSize="16"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="{Binding Errorlabel}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Foreground="AntiqueWhite" FontSize="16"
+        <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Foreground="AntiqueWhite" FontSize="16"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10"/>
-        <PasswordBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10" Text="{Binding Username}"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10" Text="{Binding Password}"/>
         <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Content="Log in" Margin="10" 
-                Background="AntiqueWhite" Foreground="IndianRed"/>
+                Background="AntiqueWhite" Foreground="IndianRed" CommandParameter="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Command="{Binding LoginCommand}"/>
         <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Content="Register" Margin="10" 
                 Background="AntiqueWhite" Foreground="IndianRed"/>
     </Grid>

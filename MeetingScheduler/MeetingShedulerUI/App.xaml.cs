@@ -13,10 +13,12 @@ namespace MeetingShedulerUI
     {
         private readonly NavigationStore _navigationStore;
         private readonly NavigationBarViewModel _navigationBarViewModel;
+        private readonly LoginFormViewModel _loginFormViewModel;
 
         public App()
         {
             _navigationStore = new NavigationStore();
+            _loginFormViewModel = new LoginFormViewModel();
             _navigationBarViewModel = new NavigationBarViewModel
                 (CreateHomeNavigationService(), CreateLoginNavigationService(), CreateProfileNavigationService());
         }
@@ -46,7 +48,7 @@ namespace MeetingShedulerUI
         private NavigationService<LoginViewModel> CreateLoginNavigationService()
         {
             return new NavigationService<LoginViewModel>
-                (_navigationStore, () => new LoginViewModel(CreateProfileNavigationService()));
+                (_navigationStore, () => new LoginViewModel(CreateProfileNavigationService(), _loginFormViewModel));
         }
 
         private NavigationService<ProfileViewModel> CreateProfileNavigationService()

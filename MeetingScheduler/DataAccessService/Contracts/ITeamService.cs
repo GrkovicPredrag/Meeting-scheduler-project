@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace DataAccessService.Contracts
 {
     [ServiceContract]
-    public interface IUserService
+    public interface ITeamService
     {
         [OperationContract]
-        UserInfo GetByID(object id);
+        TeamInfo GetByID(object id);
 
         [OperationContract]
-        List<UserInfo> GetAll();
+        List<TeamInfo> GetAll();
 
         [OperationContract]
-        void Insert(UserInfo userModel);
+        void Insert(TeamInfo teamModel);
     }
 }
