@@ -1,5 +1,8 @@
-﻿using Logger;
+﻿using DataAccessService.Composites;
+using DataAccessService.Contracts;
+using Logger;
 using MeetingShedulerUI.Commands;
+using MeetingShedulerUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +50,18 @@ namespace MeetingShedulerUI.ViewModels
 
         public void Login()
         {
-            _logger.Log($"This is in the property {this.Username}");
+            try
+            {
+                using (WCFClient<IUserService> client = new WCFClient<IUserService>("net.tcp://localhost:4000/UserService"))
+                {
+                    List<UserInfo> list = client.Proxy.GetAll();
+                }
+            }
+            catch(Exception ex)
+            {
+                _logger.Log(ex.Message.ToString());
+            }          
+            _logger.Log($"Succesfully retrieved user info!");
         }
 
         public bool CanLogin()

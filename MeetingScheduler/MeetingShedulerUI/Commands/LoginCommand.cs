@@ -24,15 +24,6 @@ namespace MeetingShedulerUI.Commands
             _logger = logger;
         }
 
-        public override bool CanExecute(object parameter)
-        {
-            var s = parameter as String;
-
-            if (!sString.IsNullOrWhiteSpace(s))
-                return false;
-
-            return true;
-        }
 
         public override void Execute(object parameter)
         {

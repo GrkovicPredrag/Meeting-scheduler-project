@@ -13,7 +13,6 @@ namespace DataAccessService
     {
         static void Main(string[] args)
         {
-
             ServiceHost userSvc = new ServiceHost(typeof(UserService));
             ServiceHost teamSvc = new ServiceHost(typeof(TeamService));
             userSvc.Open();

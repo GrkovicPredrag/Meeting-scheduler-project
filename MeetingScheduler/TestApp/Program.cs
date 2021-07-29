@@ -39,11 +39,11 @@ namespace TestApp
 
             ChannelFactory<IUserService> userFactory = new ChannelFactory<IUserService>(
                 new NetTcpBinding(),
-                new EndpointAddress("net.tcp://localhost:4000/IUserService"));
+                new EndpointAddress("net.tcp://localhost:4000/UserService"));
 
             ChannelFactory<ITeamService> teamFactory = new ChannelFactory<ITeamService>(
                 new NetTcpBinding(),
-                new EndpointAddress("net.tcp://localhost:4001/ITeamService"));
+                new EndpointAddress("net.tcp://localhost:4001/TeamService"));
 
             IUserService userProxy = userFactory.CreateChannel();
             ITeamService teamProxy = teamFactory.CreateChannel();
