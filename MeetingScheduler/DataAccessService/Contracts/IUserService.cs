@@ -12,12 +12,12 @@ namespace DataAccessService.Contracts
     public interface IUserService
     {
         [OperationContract]
-        UserInfo GetByID(object id);
+        UserInfo GetUserByID(object id);
 
         [OperationContract]
-        List<UserInfo> GetAll();
+        List<UserInfo> GetAllUsers();
 
         [OperationContract]
-        void Insert(UserInfo userModel);
+        void InsertUser(UserInfo userModel);
     }
 }

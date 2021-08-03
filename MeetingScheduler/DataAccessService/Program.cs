@@ -13,10 +13,14 @@ namespace DataAccessService
     {
         static void Main(string[] args)
         {
-            ServiceHost userSvc = new ServiceHost(typeof(UserService));
+            /*ServiceHost userSvc = new ServiceHost(typeof(UserService));
             ServiceHost teamSvc = new ServiceHost(typeof(TeamService));
             userSvc.Open();
-            teamSvc.Open();
+            teamSvc.Open();*/
+            ServiceHost databaseService = new ServiceHost(typeof(DatabaseService));
+            //databaseService.AddServiceEndpoint(typeof(IUserService), new NetTcpBinding(), "UserService");
+            //databaseService.AddServiceEndpoint(typeof(ITeamService), new NetTcpBinding(), "TeamService");
+            databaseService.Open();
 
             Console.WriteLine("Pritisnite [Enter] za zaustavljanje servisa.");
             Console.ReadLine();

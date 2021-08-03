@@ -54,7 +54,7 @@ namespace MeetingShedulerUI.ViewModels
             {
                 using (WCFClient<IUserService> client = new WCFClient<IUserService>("net.tcp://localhost:4000/UserService"))
                 {
-                    List<UserInfo> list = client.Proxy.GetAll();
+                     List<UserInfo> list = client.Proxy.GetAllUsers();
                 }
             }
             catch(Exception ex)

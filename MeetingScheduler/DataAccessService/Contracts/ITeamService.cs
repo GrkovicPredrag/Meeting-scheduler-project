@@ -12,12 +12,12 @@ namespace DataAccessService.Contracts
     public interface ITeamService
     {
         [OperationContract]
-        TeamInfo GetByID(object id);
+        TeamInfo GetTeamByID(object id);
 
         [OperationContract]
-        List<TeamInfo> GetAll();
+        List<TeamInfo> GetAllTeams();
 
         [OperationContract]
-        void Insert(TeamInfo teamModel);
+        void InsertTeam(TeamInfo teamModel);
     }
 }
