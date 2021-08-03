@@ -29,7 +29,20 @@ namespace DataAccessService.Services
 
         public UserInfo GetByID(object id)
         {
-            throw new NotImplementedException();
+            UserInfo returnUser = new UserInfo();
+            lock(lockObj)
+            {
+                try
+                {
+                    returnUser = _mapper.Map(_repo.GetByID(id));
+                }
+                catch(Exception ex)
+                {
+                    _logger.Log(ex.Message.ToString());
+                }
+            }
+
+            return returnUser;
         }
 
         public List<UserInfo> GetAll()

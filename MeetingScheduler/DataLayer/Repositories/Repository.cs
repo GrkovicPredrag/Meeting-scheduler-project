@@ -71,9 +71,19 @@ namespace DataLayer.Repositories
 
         }
 
-        public TEntity GetByID(object id)
+        public virtual TEntity GetByID(object id)
         {
-            throw new NotImplementedException();
+            TEntity toReturn = null;
+            try
+            {
+                toReturn = _table.FirstOrDefault();
+                _logger.Log("Succesfully returned objects! [GetAll]");
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex.Message.ToString());
+            }
+            return toReturn;
         }
     }
 }

@@ -30,5 +30,27 @@ namespace DataLayer.Repositories
             }
             return toReturn;
         }
+
+        public override User GetByID(object id)
+        {
+            User toReturn = new User();
+            try
+            {
+                toReturn = _table
+                    .Include(x => x.Activities)
+                    .Include(x => x.Team)
+                    .Include(x => x.Vacations)
+                    .Include(x => x.UserMeetings)
+                    .Where(x => (string)id == x.Username)
+                    .FirstOrDefault();
+
+                _logger.Log("Succesfully returned users! [GetAll]");
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex.Message.ToString());
+            }
+            return toReturn;
+        }
     }
 }

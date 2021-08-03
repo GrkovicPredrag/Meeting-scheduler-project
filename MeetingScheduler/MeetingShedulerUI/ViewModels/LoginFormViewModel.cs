@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MeetingShedulerUI.ViewModels
@@ -54,14 +55,15 @@ namespace MeetingShedulerUI.ViewModels
             {
                 using (WCFClient<IUserService> client = new WCFClient<IUserService>("net.tcp://localhost:4000/UserService"))
                 {
-                     List<UserInfo> list = client.Proxy.GetAllUsers();
+                    UserInfo userInfo = client.Proxy.GetUserByID(Username);
+                    Authenticate(userInfo.Password);
                 }
             }
             catch(Exception ex)
             {
                 _logger.Log(ex.Message.ToString());
             }          
-            _logger.Log($"Succesfully retrieved user info!");
+            _logger.Log($"Succesfully finished login process!");
         }
 
         public bool CanLogin()
@@ -73,6 +75,16 @@ namespace MeetingShedulerUI.ViewModels
                 return false;
 
             return true;
+        }
+
+        private void Authenticate(string pass)
+        {
+            if (!String.Equals(pass, Password))
+                MessageBox.Show("User failed to login [Password is not correct]!");
+            else
+                MessageBox.Show("Succesful login!");
+            Password = String.Empty;
+            Username = String.Empty;
         }
     }
 }

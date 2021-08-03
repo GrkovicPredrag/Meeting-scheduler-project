@@ -30,7 +30,7 @@ namespace DataAccessService.Services
         #region userService
         public virtual UserInfo GetUserByID(object id)
         {
-            throw new NotImplementedException();
+            return _userService.GetByID(id);
         }
 
 
