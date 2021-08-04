@@ -75,6 +75,9 @@
     <Compile Include="Components\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\LoggedUser.cs" />
+    <Compile Include="Helpers\Mappers\UserMapper.cs" />
+    <Compile Include="Helpers\Publishers\LoggedInPublisher.cs" />
     <Compile Include="Helpers\WCFClient.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

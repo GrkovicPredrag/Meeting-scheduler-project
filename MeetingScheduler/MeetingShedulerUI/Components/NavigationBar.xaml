@@ -8,17 +8,17 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label Content="Meeting Scheduler Deluxe" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="AntiqueWhite"/>
 
         <Button Grid.Column="1" Content="Home" Margin="5" Command="{Binding NavigateHomeCommand}"/>
-        <Button Grid.Column="2" Content="Login" Margin="5" Command="{Binding NavigateLoginCommand}"/>
-        <Button Grid.Column="5" Content="Profile" Margin="5" Command="{Binding NavigateProfileCommand}"/>
+        <Button Grid.Column="2" Content="Profile" Margin="5" Command="{Binding NavigateProfileCommand}"/>
+        <Button Grid.Column="5" Content="Login" Margin="5" Command="{Binding NavigateLoginCommand}"/>
     </Grid>
 </UserControl>

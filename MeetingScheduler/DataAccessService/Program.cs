@@ -22,7 +22,7 @@ namespace DataAccessService
             //databaseService.AddServiceEndpoint(typeof(ITeamService), new NetTcpBinding(), "TeamService");
             databaseService.Open();
 
-            Console.WriteLine("Pritisnite [Enter] za zaustavljanje servisa.");
+            Console.WriteLine("Data Access Service running...");
             Console.ReadLine();
         }
     }

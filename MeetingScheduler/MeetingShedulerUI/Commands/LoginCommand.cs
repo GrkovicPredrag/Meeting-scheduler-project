@@ -24,7 +24,6 @@ namespace MeetingShedulerUI.Commands
             _logger = logger;
         }
 
-
         public override void Execute(object parameter)
         {
             this.ViewModel.Login();

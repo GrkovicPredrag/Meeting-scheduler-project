@@ -3,11 +3,9 @@ using DataAccessService.Contracts;
 using Logger;
 using MeetingShedulerUI.Commands;
 using MeetingShedulerUI.Helpers;
+using MeetingShedulerUI.Helpers.Mappers;
+using MeetingShedulerUI.Helpers.Publishers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -16,9 +14,13 @@ namespace MeetingShedulerUI.ViewModels
     public class LoginFormViewModel : ViewModelBase
     {
         private readonly ILogger _logger;
+        private readonly LoggedInPublisher _publisher;
 
         private string username;
         private string password;
+        private string error;
+
+        public event EventHandler UserLoggedIn;
 
         public string Username
         {
@@ -40,6 +42,15 @@ namespace MeetingShedulerUI.ViewModels
             }
         }
 
+        public string Error
+        { 
+            get { return this.error; }
+            set
+            {
+                this.error = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand LoginCommand { get; set; }
 
@@ -51,12 +62,26 @@ namespace MeetingShedulerUI.ViewModels
 
         public void Login()
         {
+            if (!CanLogin())
+            {
+                ClearFields();
+                Error = "Some fields were empty. Try again!";
+                return;
+            }
+
             try
             {
                 using (WCFClient<IUserService> client = new WCFClient<IUserService>("net.tcp://localhost:4000/UserService"))
                 {
                     UserInfo userInfo = client.Proxy.GetUserByID(Username);
-                    Authenticate(userInfo.Password);
+                    if (!Authenticate(userInfo.Password))
+                    {
+                        ClearFields();
+                        Error = "Failed authentication. Try again!";
+                        return;
+                    }
+                    FillLoggedUser(userInfo);
+                    ClearFields();
                 }
             }
             catch(Exception ex)
@@ -64,27 +89,45 @@ namespace MeetingShedulerUI.ViewModels
                 _logger.Log(ex.Message.ToString());
             }          
             _logger.Log($"Succesfully finished login process!");
+            UserLoggedIn(this, EventArgs.Empty);
         }
 
         public bool CanLogin()
         {
-            if (Username == null || Password == null)
-                return false;
-
             if (String.IsNullOrWhiteSpace(Username) || String.IsNullOrWhiteSpace(Password))
                 return false;
 
             return true;
         }
 
-        private void Authenticate(string pass)
+        private bool Authenticate(string pass)
         {
             if (!String.Equals(pass, Password))
-                MessageBox.Show("User failed to login [Password is not correct]!");
-            else
-                MessageBox.Show("Succesful login!");
-            Password = String.Empty;
+                return false;
+
+            return true;
+        }
+
+        private void FillLoggedUser(UserInfo userInfo)
+        {
+            using(UserMapper mapper = new UserMapper())
+            {
+                try
+                {
+                    LoggedUser.Instance.User = mapper.Map(userInfo);
+                }
+                catch(Exception ex)
+                {
+                    _logger.Log(ex.Message.ToString());
+                }
+            }
+        }
+
+        private void ClearFields()
+        {
             Username = String.Empty;
+            Password = String.Empty;
+            Error = String.Empty;
         }
     }
 }

@@ -31,7 +31,7 @@
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="Alternatively, you can" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Foreground="AntiqueWhite" FontSize="16"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Foreground="AntiqueWhite" FontSize="16"
+        <Label Content="{Binding Error}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Foreground="AntiqueWhite" FontSize="16"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
         <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10" Text="{Binding Username}"/>
