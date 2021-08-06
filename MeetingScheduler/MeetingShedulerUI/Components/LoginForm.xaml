@@ -37,7 +37,7 @@
         <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10" Text="{Binding Username}"/>
         <TextBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Background="AntiqueWhite" Margin="10" Text="{Binding Password}"/>
         <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Content="Log in" Margin="10" 
-                Background="AntiqueWhite" Foreground="IndianRed" CommandParameter="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Command="{Binding LoginCommand}"/>
+                Background="AntiqueWhite" Foreground="IndianRed" Command="{Binding LoginCommand}"/>
         <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Content="Register" Margin="10" 
                 Background="AntiqueWhite" Foreground="IndianRed"/>
     </Grid>

@@ -19,6 +19,7 @@ namespace MeetingShedulerUI.ViewModels
         public HomeViewModel(NavigationService<LoginViewModel> loginNavigationService, NavigationBarViewModel navigationBarViewModel)
         {
             NavigationBarViewModel = navigationBarViewModel;
+            NavigationBarViewModel.SetVisibilityOfButtons();
 
             NavigateLogin = new NavigateCommand<LoginViewModel>(loginNavigationService);
         }

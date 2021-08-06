@@ -14,11 +14,17 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label Content="Meeting Scheduler Deluxe" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="AntiqueWhite"/>
 
         <Button Grid.Column="1" Content="Home" Margin="5" Command="{Binding NavigateHomeCommand}"/>
         <Button Grid.Column="2" Content="Profile" Margin="5" Command="{Binding NavigateProfileCommand}"/>
-        <Button Grid.Column="5" Content="Login" Margin="5" Command="{Binding NavigateLoginCommand}"/>
+        <Button Grid.Column="5" Content="Log out"  Margin="5" Command="{Binding LogoutCommand}"
+                Visibility="{Binding LogoutVisible, Mode=TwoWay}">
+        </Button>
+        <Button Grid.Column="6" Content="Log in" Margin="5" Command="{Binding NavigateLoginCommand}" 
+                Visibility="{Binding LoginVisible, Mode=TwoWay}">
+        </Button>
     </Grid>
 </UserControl>

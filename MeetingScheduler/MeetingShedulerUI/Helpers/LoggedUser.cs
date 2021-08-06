@@ -9,7 +9,9 @@ namespace MeetingShedulerUI.Helpers
 {
     public sealed class LoggedUser
     {
-        LoggedUser() { }
+        LoggedUser() 
+        {
+        }
         private static readonly object lockObj = new object ();  
         private static LoggedUser instance = null;
         public static LoggedUser Instance
@@ -20,7 +22,7 @@ namespace MeetingShedulerUI.Helpers
                     {
                         if (instance == null)
                         {
-                            instance = new LoggedUser();
+                        instance = new LoggedUser();
                         }
                         return instance;
                     }
