@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="MeetingShedulerUI.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MeetingShedulerUI.Views" 
+             xmlns:components="clr-namespace:MeetingShedulerUI.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <components:LoginForm Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="4" DataContext="{Binding LoginFormViewModel}"/>
+        <Button Height="50" Width="100" Command="{Binding NavigateProfile}" Grid.Row="5" Grid.Column="5" Foreground="IndianRed"
+                Background="AntiqueWhite" HorizontalAlignment="Right" VerticalAlignment="Bottom">Go to profile</Button>
+    </Grid>
+</UserControl>

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MeetingShedulerUI.Views
+namespace MeetingShedulerUI.Components
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for NavigationBar.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class NavigationBar : UserControl
     {
-        public MainView()
+        public NavigationBar()
         {
             InitializeComponent();
         }
