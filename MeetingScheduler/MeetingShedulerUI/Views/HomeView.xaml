@@ -12,9 +12,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <components:NavigationBar Grid.Row="0" DataContext="{Binding NavigationBarViewModel}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Background="AntiqueWhite">
+        <components:NavigationBar Grid.Row="0" Grid.ColumnSpan="4" DataContext="{Binding NavigationBarViewModel}"/>
+        <components:Calendar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" DataContext="{Binding CalendarViewModel}"/>
+
+        <Grid Grid.Row="1" Grid.Column="3" Background="AntiqueWhite">
             <Button Height="50" Width="100" Command="{Binding NavigateLogin}">Go to login</Button>
         </Grid>
     </Grid>
